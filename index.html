@@ -2,42 +2,108 @@
 
 <!-- saved from url=(0097)file:///Users/authenticimports/Downloads/calculadora_authentic_com_tampa_iphone_com_pesquisa.html -->
 <html lang="pt-BR"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-<link href="file:///Users/authenticimports/Downloads/manifest.json" rel="manifest"/>
+<link href="manifest.json" rel="manifest"/>
+<link href="logo.png" rel="icon" type="image/png">
+<link href="logo.png" rel="apple-touch-icon"/>
 <meta content="#d4af37" name="theme-color"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Orçamentos Authentic</title>
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-.container, .content, main, section {
-    max-width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow-x: auto;
-    display: block;
-}
-th, td {
-    padding: 8px;
-    text-align: left;
-    word-break: break-word;
-}
-button, input, select {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-}
-</style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #121212;
+      margin: 0;
+      padding: 20px;
+      color: #f5f5f5;
+    }
+    #app {
+      width: 100%; max-width: 100%; box-sizing: border-box;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 25px;
+      border-radius: 14px;
+      border: 1px solid #d4af37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #333;
+    }
+    .tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: #bbb;
+      transition: 0.3s;
+    }
+    .tab.active {
+      border-bottom: 3px solid #d4af37;
+      color: #d4af37;
+    }
+    .content {
+      display: none;
+    }
+    .content.active {
+      display: block;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #f5f5f5;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #555;
+      border-radius: 8px;
+      margin-top: 8px;
+      background: #222;
+      color: #f5f5f5;
+    }
+    input[type="number"]::placeholder {
+      color: #999;
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #c9a236;
+    }
+    .result {
+      background: #181818;
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      white-space: pre-line;
+      border: 1px solid #d4af37;
+      color: #f5f5f5;
+    }
+    .whatsapp {
+      margin-top: 10px;
+      background: #25D366;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .whatsapp:hover {
+      background: #20b858;
+    }
+    </style>
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
@@ -75,8 +141,8 @@ button, input, select {
     max-width: 100%;
     box-sizing: border-box;
 }
-</style></head>
-<body><div style="background-color: green; color: white; text-align: center; padding: 10px; font-weight: bold;">Teste Mobile 2</div>
+</style></link></head>
+<body><div style="text-align:center;padding:10px;background:#d4af37;color:#000;font-weight:bold;">Teste Mobile</div><div style="background-color: green; color: white; text-align: center; padding: 10px; font-weight: bold;">Teste Mobile 2</div>
 <div id="app">
 <h2>Orçamentos Authentic</h2>
 <div class="tabs">
