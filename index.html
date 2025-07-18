@@ -1,54 +1,856 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora Authentic</title>
-  <link rel="icon" type="image/png" href="logo.png" />
-  <style>
+
+<!-- saved from url=(0097)file:///Users/authenticimports/Downloads/calculadora_authentic_com_tampa_iphone_com_pesquisa.html -->
+<html lang="pt-BR"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link href="file:///Users/authenticimports/Downloads/manifest.json" rel="manifest"/>
+<meta content="#d4af37" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Orçamentos Authentic</title>
+<style>
     body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #121212;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+      padding: 20px;
+      color: #f5f5f5;
+    }
+    #app {
+      max-width: 700px;
+      margin: auto;
+      background: #1e1e1e;
+      padding: 25px;
+      border-radius: 14px;
+      border: 1px solid #d4af37;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #333;
+    }
+    .tab {
+      flex: 1;
+      padding: 12px;
       text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: #bbb;
+      transition: 0.3s;
     }
-    header {
-      background: #000;
-      padding: 20px;
+    .tab.active {
+      border-bottom: 3px solid #d4af37;
+      color: #d4af37;
     }
-    header img {
-      max-height: 60px;
+    .content {
+      display: none;
     }
-    .container {
-      padding: 20px;
+    .content.active {
+      display: block;
     }
-    .teste4 {
-      background-color: #2ecc71;
-      padding: 20px;
+    label {
+      display: block;
       margin-top: 20px;
+      font-weight: bold;
+      color: #f5f5f5;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #555;
+      border-radius: 8px;
+      margin-top: 8px;
+      background: #222;
+      color: #f5f5f5;
+    }
+    input[type="number"]::placeholder {
+      color: #999;
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #c9a236;
+    }
+    .result {
+      background: #181818;
+      margin-top: 15px;
+      padding: 15px;
       border-radius: 10px;
-      font-size: 20px;
+      font-size: 1rem;
+      white-space: pre-line;
+      border: 1px solid #d4af37;
+      color: #f5f5f5;
     }
-    @media (max-width: 600px) {
-      .container {
-        padding: 10px;
-      }
-      .teste4 {
-        font-size: 16px;
-        padding: 15px;
-      }
+    .whatsapp {
+      margin-top: 10px;
+      background: #25D366;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
     }
-  </style>
-</head>
+    .whatsapp:hover {
+      background: #20b858;
+    }
+    </style>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyB2kWfJRhrmNWZUEuUfXKoAMY5rMKvELzE",
+    authDomain: "painelauthentic-f0af6.firebaseapp.com",
+    projectId: "painelauthentic-f0af6",
+    storageBucket: "painelauthentic-f0af6.appspot.com",
+    messagingSenderId: "150237743323",
+    appId: "1:150237743323:web:155262e660c85d1a"
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+<link href="logo.png" rel="icon" type="image/png"/><link href="logo.png" rel="apple-touch-icon"/></head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Authentic Imports" />
-  </header>
-  <div class="container">
-    <h1>Calculadora Authentic</h1>
-    <div class="teste4">🟩 Teste 4: Conteúdo visível aqui</div>
-  </div>
-</body>
-</html>
+<div id="app">
+<h2>Orçamentos Authentic</h2>
+<div class="tabs">
+<div class="tab" data-tab="tela">Tela</div>
+<div class="tab" data-tab="original">Tela Original</div>
+<div class="tab" data-tab="bateria">Bateria</div>
+<div class="tab" data-tab="vidro">Vidro</div>
+<div class="tab" data-tab="tampa">Tampa Android</div>
+<div class="tab" data-tab="lojistas">Lojistas</div><div class="tab active" data-tab="tampaiphone">Tampa iPhone</div><div class="tab" data-tab="compra">📥 Compras</div></div>
+<div class="content" id="tela">
+<label>Preço da tela (Gold / 1ª Linha):</label>
+<input id="inputTela" placeholder="Ex: 200.00" type="number"/>
+<button onclick="calcularTela()">Calcular</button>
+<div class="result" id="resTela"></div>
+<button onclick="copiarTexto('resTela')">Copiar Orçamento</button>
+</div>
+<div class="content" id="original">
+<label>Preço da tela original:</label>
+<input id="inputOriginal" placeholder="Ex: 400.00" type="number"/>
+<button onclick="calcularOriginal()">Calcular</button>
+<div class="result" id="resOriginal"></div>
+<button onclick="copiarTexto('resOriginal')">Copiar Orçamento</button>
+</div>
+<div class="content" id="bateria">
+<label>Preço da bateria:</label>
+<input id="inputBateria" placeholder="Ex: 150.00" type="number"/>
+<button onclick="calcularBateria()">Calcular</button>
+<div class="result" id="resBateria"></div>
+<button onclick="copiarTexto('resBateria')">Copiar Orçamento</button>
+</div>
+<div class="content" id="vidro">
+<label>Preço da tela para base de vidro:</label>
+<input id="inputVidro" placeholder="Ex: 250.00" type="number"/>
+<button onclick="calcularVidro()">Calcular</button>
+<div class="result" id="resVidro"></div>
+<button onclick="copiarTexto('resVidro')">Copiar Orçamento</button>
+</div>
+<div class="content" id="tampa">
+<label>Preço da tampa traseira (Android):</label>
+<input id="inputTampa" placeholder="Ex: 180.00" type="number"/>
+<button onclick="calcularTampa()">Calcular</button>
+<div class="result" id="resTampa"></div>
+<button onclick="copiarTexto('resTampa')">Copiar Orçamento</button>
+</div>
+<div class="content" id="lojistas"><h3>Tabela de Preços para Lojistas</h3>
+<label for="searchLojista" style="margin-top: 10px; display:block; font-weight:bold; color:#d4af37;">
+🔍 Pesquisar modelo:</label>
+<input id="searchLojista" placeholder="Digite o modelo" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #d4af37; background:#121212; color:#f5f5f5;" type="text"/>
+<script>
+document.getElementById('searchLojista').addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  const rows = document.querySelectorAll('#lojistas tbody tr');
+  rows.forEach(row => {
+    const modelo = row.cells[0].textContent.toLowerCase();
+    if (modelo.includes(filter)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+});
+</script>
+<div style="overflow-x: auto;">
+<table style="width:100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem;">
+<thead>
+<tr style="background: #333; color: #fff;">
+<th style="border: 1px solid #555; padding: 8px;">Modelo</th>
+<th style="border: 1px solid #555; padding: 8px;">Tela (R$)</th>
+<th style="border: 1px solid #555; padding: 8px;">Bateria (R$)</th>
+<th style="border: 1px solid #555; padding: 8px;">Tampa Traseira (R$)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 6</td>
+<td style="border: 1px solid #444; padding: 6px;">100.00</td>
+<td style="border: 1px solid #444; padding: 6px;">110.00</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 6 plus</td>
+<td style="border: 1px solid #444; padding: 6px;">100.00</td>
+<td style="border: 1px solid #444; padding: 6px;">110.00</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 7</td>
+<td style="border: 1px solid #444; padding: 6px;">130.00</td>
+<td style="border: 1px solid #444; padding: 6px;">110.00</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 7 plus</td>
+<td style="border: 1px solid #444; padding: 6px;">175.00</td>
+<td style="border: 1px solid #444; padding: 6px;">110.00</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 8</td>
+<td style="border: 1px solid #444; padding: 6px;">150.00</td>
+<td style="border: 1px solid #444; padding: 6px;">110.00</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 8 plus</td>
+<td style="border: 1px solid #444; padding: 6px;">185.00</td>
+<td style="border: 1px solid #444; padding: 6px;">110.00</td>
+<td style="border: 1px solid #444; padding: 6px;">159.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone XR</td>
+<td style="border: 1px solid #444; padding: 6px;">240.00</td>
+<td style="border: 1px solid #444; padding: 6px;">220.00</td>
+<td style="border: 1px solid #444; padding: 6px;">180.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone X</td>
+<td style="border: 1px solid #444; padding: 6px;">235.00</td>
+<td style="border: 1px solid #444; padding: 6px;">160.00</td>
+<td style="border: 1px solid #444; padding: 6px;">150.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone Xs</td>
+<td style="border: 1px solid #444; padding: 6px;">245.00</td>
+<td style="border: 1px solid #444; padding: 6px;">160.00</td>
+<td style="border: 1px solid #444; padding: 6px;">150.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone XS M</td>
+<td style="border: 1px solid #444; padding: 6px;">310.00</td>
+<td style="border: 1px solid #444; padding: 6px;">180.00</td>
+<td style="border: 1px solid #444; padding: 6px;">180.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 11</td>
+<td style="border: 1px solid #444; padding: 6px;">260.00</td>
+<td style="border: 1px solid #444; padding: 6px;">220.00</td>
+<td style="border: 1px solid #444; padding: 6px;">200.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 11 pro</td>
+<td style="border: 1px solid #444; padding: 6px;">370.00</td>
+<td style="border: 1px solid #444; padding: 6px;">230.00</td>
+<td style="border: 1px solid #444; padding: 6px;">200.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 11 PM</td>
+<td style="border: 1px solid #444; padding: 6px;">395.00</td>
+<td style="border: 1px solid #444; padding: 6px;">240.00</td>
+<td style="border: 1px solid #444; padding: 6px;">220.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 12</td>
+<td style="border: 1px solid #444; padding: 6px;">395.00</td>
+<td style="border: 1px solid #444; padding: 6px;">240.00</td>
+<td style="border: 1px solid #444; padding: 6px;">220.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 12 mini</td>
+<td style="border: 1px solid #444; padding: 6px;">400.00</td>
+<td style="border: 1px solid #444; padding: 6px;">285.00</td>
+<td style="border: 1px solid #444; padding: 6px;">190.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 12 pro</td>
+<td style="border: 1px solid #444; padding: 6px;">500.00</td>
+<td style="border: 1px solid #444; padding: 6px;">275.00</td>
+<td style="border: 1px solid #444; padding: 6px;">220.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 12 PM</td>
+<td style="border: 1px solid #444; padding: 6px;">510.00</td>
+<td style="border: 1px solid #444; padding: 6px;">280.00</td>
+<td style="border: 1px solid #444; padding: 6px;">240.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 13</td>
+<td style="border: 1px solid #444; padding: 6px;">1000.00</td>
+<td style="border: 1px solid #444; padding: 6px;">280.00</td>
+<td style="border: 1px solid #444; padding: 6px;">250.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 13 mini</td>
+<td style="border: 1px solid #444; padding: 6px;">1100.00</td>
+<td style="border: 1px solid #444; padding: 6px;">260.00</td>
+<td style="border: 1px solid #444; padding: 6px;">280.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 13 pro</td>
+<td style="border: 1px solid #444; padding: 6px;">470.00</td>
+<td style="border: 1px solid #444; padding: 6px;">270.00</td>
+<td style="border: 1px solid #444; padding: 6px;">280.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 13 PM</td>
+<td style="border: 1px solid #444; padding: 6px;">1300.00</td>
+<td style="border: 1px solid #444; padding: 6px;">310.00</td>
+<td style="border: 1px solid #444; padding: 6px;">320.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 14</td>
+<td style="border: 1px solid #444; padding: 6px;">1400.00</td>
+<td style="border: 1px solid #444; padding: 6px;">380.00</td>
+<td style="border: 1px solid #444; padding: 6px;">280.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 14 pro</td>
+<td style="border: 1px solid #444; padding: 6px;">1400.00</td>
+<td style="border: 1px solid #444; padding: 6px;">380.00</td>
+<td style="border: 1px solid #444; padding: 6px;">280.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 14 PM</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 14 plus</td>
+<td style="border: 1px solid #444; padding: 6px;">1400.00</td>
+<td style="border: 1px solid #444; padding: 6px;">400.00</td>
+<td style="border: 1px solid #444; padding: 6px;">370.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 15</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">370.00</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 15 PM</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+<tr>
+<td style="border: 1px solid #444; padding: 6px;">iPhone 16</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+<td style="border: 1px solid #444; padding: 6px;">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="content active" id="tampaiphone"><h3>Tabela de Troca de Tampa de iPhones</h3>
+<label for="searchInput" style="margin-top: 10px; display:block; font-weight:bold; color:#d4af37;">
+🔍 Pesquisar modelo:</label>
+<input id="searchInput" placeholder="Digite o modelo do iPhone" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #d4af37; background:#121212; color:#f5f5f5;" type="text"/>
+<div style="overflow-x: auto;"><table style="width:100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem;"><thead><tr style="background: #333; color: #fff;"><th style="border: 1px solid #555; padding: 8px;">Modelo</th><th style="border: 1px solid #555; padding: 8px;">Valor da Tampa (R$)</th></tr></thead><tbody id="tabelaTampa"></tbody></table></div></div>
+<div class="content" id="compra">
+<h3>Tabela de Compras — Celulares 100% Sem Defeitos</h3>
+<label for="searchCompra" style="margin-top: 10px; display:block; font-weight:bold; color:#d4af37;">
+  🔍 Pesquisar modelo:</label>
+<input id="searchCompra" placeholder="Digite o modelo" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #d4af37; background:#121212; color:#f5f5f5;" type="text"/>
+<div style="overflow-x: auto;">
+<table style="width:100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem;">
+<thead>
+<tr style="background: #333; color: #fff;">
+<th style="border: 1px solid #555; padding: 8px;">Modelo</th>
+<th style="border: 1px solid #555; padding: 8px;">Valor Base (R$) — Bateria acima de 85%</th>
+<th style="border: 1px solid #555; padding: 8px;">Com troca de bateria (R$)</th>
+<th style="border: 1px solid #555; padding: 8px;">Com arranhões (R$) — Bateria acima de 85%</th>
+<th style="border: 1px solid #555; padding: 8px;">Ambos os defeitos (R$)</th>
+</tr>
+</thead>
+<tbody id="tabelaCompra">
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 11 64GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 650,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 350,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 11 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 850,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 550,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 11 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 950,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 650,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 11 PRO 64GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 950,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 650,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 11 PRO 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1150,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 850,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 11 PRO MAX 64GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1150,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 850,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 11 PRO MAX 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1250,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 950,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 12 64GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1250,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 950,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 12 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1450,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1150,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 12 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1550,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1400,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1400,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1250,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 12 PRO 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1750,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1600,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1600,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1450,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 12 PRO 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1950,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1650,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 12 PRO MAX 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2150,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1850,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 12 PRO MAX 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2350,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2200,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2200,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2050,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 13 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1950,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1800,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1650,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 13 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2150,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 1850,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 13 PRO 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2550,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2400,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2400,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2250,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 13 PRO 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2650,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2350,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 13 PRO MAX 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2850,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2550,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 13 PRO MAX 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3050,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2900,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2900,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2750,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 14 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2450,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2150,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 14 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2650,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2350,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 14 PLUS 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2650,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2350,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 14 PRO 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3250,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2950,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 14 PRO 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3350,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3200,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3200,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3050,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 14 PRO MAX 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3750,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3600,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3600,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3450,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 14 PRO MAX 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3850,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3550,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 15 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3150,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 2850,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 15 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3450,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3150,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 15 PRO 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4250,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4100,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3950,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 15 PRO 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4450,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4300,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4150,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 15 PRO MAX 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5150,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4850,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 16 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3850,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3700,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3550,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 16 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4150,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4000,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 3850,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 16 PRO 128GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5050,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4900,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4900,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 4750,00</td>
+</tr>
+<tr style="; display: none;">
+<td style="border: 1px solid #444; padding: 6px;">IPHONE 16 PRO MAX 256GB</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5650,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5500,00</td>
+<td style="border: 1px solid #444; padding: 6px;">R$ 5350,00</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-top:15px; color:#d4af37; font-weight:bold;">📌 Observação: os valores possuem até R$ 150,00 de margem para negociação no momento da compra.</p></div>
+</div>
+<script>
+document.getElementById('searchCompra').addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  const rows = document.querySelectorAll('#tabelaCompra tr');
+  rows.forEach(row => {
+    const modelo = row.cells[0].textContent.toLowerCase();
+    row.style.display = modelo.includes(filter) ? '' : 'none';
+  });
+});
+</script>
+</div>
+<script>
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+function copiarTexto(id) {
+  const texto = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(texto).then(() => alert("Copiado com sucesso!"));
+}
+
+function calcularTela() {
+  const val = parseFloat(document.getElementById('inputTela').value);
+  const arredondar = (valor) => Math.ceil(valor / 10) * 10;
+
+  const gold = arredondar(val + 150 + val * 0.30);
+  const primeira = arredondar(val + 70 + val * 0.30);
+
+  const texto = `🔹 Tela GOLD (qualidade superior)
+💰 Valor: R$ ${gold},00
+📄 Garantia: 6 meses contra defeito de fabricação.
+✨ Qualidade: Excelente fidelidade de imagem, brilho e sensibilidade.
+
+🔹 Tela 1ª LINHA (bom custo-benefício)
+💰 Valor: R$ ${primeira},00
+📄 Garantia: 3 meses contra defeito de fabricação.
+✨ Qualidade: Boa resolução e desempenho, com pequenas diferenças visuais em relação à original.
+
+⏱️ Prazo de entrega:
+Se o aparelho for entregue na loja no início da manhã, o aparelho estará pronto no mesmo dia, até o final da tarde.
+
+📌 Observações:
+Ambas as telas acompanham instalação completa e teste funcional antes da entrega.
+Garantia válida apenas para defeitos de fabricação, não cobrindo danos por queda ou mau uso.`;
+
+  document.getElementById('resTela').textContent = texto;
+}
+
+function calcularOriginal() {
+  const val = parseFloat(document.getElementById('inputOriginal').value);
+  const arredondado = Math.ceil((val + 230 + val * 0.30) / 10) * 10;
+  const texto = `✅ Orçamento para Troca de Tela Original
+
+🔧 Tela Original — R$ ${arredondado},00
+🛡️ Garantia de 1 ano (válida exclusivamente para defeitos de fabricação)
+✨ Qualidade máxima original de fábrica
+📲 Instalação completa com testes inclusos
+👨‍🔧 Serviço feito por técnico especializado
+💳 Pagamento via Pix, débito ou crédito
+
+📦 Vantagens de escolher a tela original:
+✔️ Maior durabilidade e fidelidade de imagem
+✔️ Toque e brilho idênticos ao da tela de fábrica
+✔️ Compatibilidade total com o sistema
+
+⏰ Prazo de entrega:
+Se o aparelho for deixado no início da manhã, a entrega é feita no mesmo dia!
+
+📲 Entre em contato e agende seu atendimento com a confiança de quem entrega qualidade original!`;
+  document.getElementById('resOriginal').textContent = texto;
+}
+
+function calcularBateria() {
+  const val = parseFloat(document.getElementById('inputBateria').value);
+  const arredondar = (valor) => Math.ceil(valor / 10) * 10;
+
+  const original = arredondar(val + 230 + val * 0.30);
+  const gold = arredondar(val + 150 + val * 0.30);
+  const primeira = arredondar(val + 100 + val * 0.30);
+
+  const texto = `🔋 Orçamento para Troca de Bateria
+
+🔋 Bateria Original
+* Valor: R$ ${original},00
+* Garantia: 1 ano
+* Benefícios: Mesma qualidade da bateria de fábrica, sem nenhuma mensagem de “peça substituída” no sistema. Ideal para quem busca desempenho máximo e originalidade.
+
+🔋 Bateria Gold
+* Valor: R$ ${gold},00
+* Garantia: 6 meses
+* Qualidade excelente, muito próxima da original.
+* Observação: Aparece a mensagem de “peça desconhecida” no sistema, mas não afeta o funcionamento.
+
+🔋 Bateria 1ª Linha 
+* Valor: R$ ${primeira},00
+* Garantia: 3 meses
+* Boa qualidade para quem busca um custo mais acessível.
+* Observação: Também aparece a mensagem de “peça desconhecida”, sem interferência no desempenho.`;
+
+  document.getElementById('resBateria').textContent = texto;
+}
+
+function calcularVidro() {
+  const val = parseFloat(document.getElementById('inputVidro').value);
+  let preco = 180;
+  if (val > 100) {
+    const adicional = Math.floor((val - 100) / 50) * 30;
+    preco += adicional;
+  }
+  preco = Math.ceil(preco / 10) * 10;
+  const texto = `💎 Troque só o vidro e mantenha a tela original!
+
+Valor: R$ ${preco},00
+Garantia: 03 meses contra defeito de fabricação.
+
+Você não precisa trocar a tela inteira. Aqui, fazemos a troca do vidro mantendo a tela original de fábrica, garantindo a mesma qualidade de imagem, brilho e sensibilidade ao toque.
+
+✅ Economize até 70% comparado ao valor de uma tela nova
+✅ Manutenção de fábrica: sua tela continua com o mesmo desempenho
+✅ Preserva a autonomia da bateria (sem peças paralelas que forçam mais o consumo)
+✅ Entrega no mesmo dia
+✅ Feito em laboratório próprio, com técnicos especializados
+✅ Pagamento via Pix, débito ou crédito
+
+Perfeito pra quem quer economizar sem abrir mão da qualidade original.`;
+  document.getElementById('resVidro').textContent = texto;
+}
+
+function calcularTampa() {
+  const val = parseFloat(document.getElementById('inputTampa').value);
+  let preco = val + 100 + val * 0.25;
+  preco = Math.ceil(preco / 10) * 10;
+  const texto = `🔧 Troca da Tampa Traseira
+
+💰 Valor: R$ ${preco},00
+🛡️ Garantia: 3 meses
+
+📦 Inclui: Tampa nova com instalação completa e acabamento de alta qualidade
+
+👨‍🔧 Serviço executado por técnico especializado
+
+💳 Pagamento via Pix, débito ou crédito`;
+  document.getElementById('resTampa').textContent = texto;
+}
+</script>
+<script>
+document.getElementById('searchInput').addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  const rows = document.querySelectorAll('#tampaiphone tbody tr');
+  rows.forEach(row => {
+    const modelo = row.cells[0].textContent.toLowerCase();
+    if(modelo.includes(filter)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+});
+</script>
+<script>
+document.querySelectorAll("#lojistas tbody tr").forEach(row => row.style.display = "none");
+
+document.querySelectorAll("#tampaiphone tbody tr").forEach(row => row.style.display = "none");
+
+document.getElementById('searchLojista').addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  const rows = document.querySelectorAll('#lojistas tbody tr');
+  rows.forEach(row => {
+    const modelo = row.cells[0].textContent.toLowerCase();
+    if (modelo.includes(filter)) {{
+      row.style.display = '';
+    }} else {{
+      row.style.display = 'none';
+    }}
+  });
+});
+document.getElementById('searchInput').addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  const rows = document.querySelectorAll('#tampaiphone tbody tr');
+  rows.forEach(row => {
+    const modelo = row.cells[0].textContent.toLowerCase();
+    if(modelo.includes(filter)) {{
+      row.style.display = '';
+    }} else {{
+      row.style.display = 'none';
+    }}
+  });
+});
+</script>
+<script>
+  db.collection("tabelaTampaIphone").get().then((querySnapshot) => {
+    const tabela = document.getElementById("tabelaTampa");
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td style="border: 1px solid #444; padding: 6px;">${data.modelo}</td>
+        <td style="border: 1px solid #444; padding: 6px;">R$ ${data.valor},00</td>
+      `;
+      tabela.appendChild(row);
+    });
+  });
+</script>
+</body></html>
