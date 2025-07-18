@@ -118,7 +118,28 @@
   const app = firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
-<link href="logo.png" rel="icon" type="image/png"/><link href="logo.png" rel="apple-touch-icon"/></head>
+<link href="logo.png" rel="icon" type="image/png"/><link href="logo.png" rel="apple-touch-icon"/><style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.container {
+    max-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+button, input, select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+</style></head>
 <body>
 <div id="app">
 <h2>Orçamentos Authentic</h2>
