@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 
 <!-- saved from url=(0097)file:///Users/authenticimports/Downloads/calculadora_authentic_com_tampa_iphone_com_pesquisa.html -->
-<html lang="pt-BR"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-<link href="manifest.json" rel="manifest"/>
-<link href="logo.png" rel="icon" type="image/png">
-<link href="logo.png" rel="apple-touch-icon"/>
+<html lang="pt-BR"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link href="file:///Users/authenticimports/Downloads/manifest.json" rel="manifest"/>
 <meta content="#d4af37" name="theme-color"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Orçamentos Authentic</title>
@@ -17,7 +16,7 @@
       color: #f5f5f5;
     }
     #app {
-      width: 100%; max-width: 100%; box-sizing: border-box;
+      max-width: 700px;
       margin: auto;
       background: #1e1e1e;
       padding: 25px;
@@ -141,8 +140,66 @@ button, input, select {
     max-width: 100%;
     box-sizing: border-box;
 }
-</style></link></head>
-<body><div style="text-align:center;padding:10px;background:#d4af37;color:#000;font-weight:bold;">Teste Mobile</div><div style="background-color: green; color: white; text-align: center; padding: 10px; font-weight: bold;">Teste Mobile 2</div>
+</style>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+    }
+
+    .main-box, .container, .content {
+        width: 100%;
+        max-width: 480px;
+        margin: auto;
+        padding: 16px;
+    }
+
+    nav, .menu, .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    input, select, button {
+        width: 100%;
+        font-size: 16px;
+        margin: 8px 0;
+        padding: 10px;
+    }
+
+    table {
+        width: 100%;
+        table-layout: auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    @media screen and (max-width: 480px) {
+        nav, .menu, .tabs {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .tab-item {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+    }
+</style>
+
+</head>
+<body><div style=" color: white; text-align: center; padding: 10px; font-weight: bold;"></div>
 <div id="app">
 <h2>Orçamentos Authentic</h2>
 <div class="tabs">
